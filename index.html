@@ -8,20 +8,17 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
     <style>
-        body { margin: 0; overflow: hidden; background-color: #000; }
+        body { margin: 0; overflow: hidden; background: #000; }
         .ui {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: rgba(0,0,0,0.8); color: white; padding: 15px;
-            border-radius: 10px; z-index: 999; text-align: center; width: 80%;
+            position: fixed; top: 10%; left: 50%; transform: translateX(-50%);
+            background: rgba(255, 0, 0, 0.7); color: white; padding: 10px;
+            border-radius: 5px; z-index: 1000; font-family: sans-serif;
         }
     </style>
 </head>
 <body style="margin: 0; overflow: hidden;">
 
-    <div class="ui">
-        Dovme ekranin ortasinda belirecek.<br>
-        Parmaginla surukle ve buyut.
-    </div>
+    <div class="ui">EKRANI KONTROL ET: Dovme yukleniyor...</div>
 
     <a-scene 
         embedded 
@@ -30,16 +27,14 @@
         vr-mode-ui="enabled: false">
         
         <a-assets>
-            <img id="tattoo-img" src="flash1.png">
+            <img id="tattoo-img" src="https://yigit-candemir-debug.github.io/flashbook1/flash1.png" crossorigin="anonymous">
         </a-assets>
 
         <a-entity
             id="tattoo-model"
-            geometry="primitive: plane; height: 1; width: 1"
+            geometry="primitive: plane; height: 1.5; width: 1.5"
             material="src: #tattoo-img; transparent: true; shader: flat; side: double;"
-            position="0 1.5 -2" 
-            rotation="0 0 0"
-            scale="1 1 1"
+            position="0 1.5 -3" 
             class="clickable"
             gesture-handler>
         </a-entity>
