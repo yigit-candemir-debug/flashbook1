@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
-    </head>
-    <body style="margin: 0; overflow: hidden;">
-        <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image.prod.js; showStats: false;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-            <a-assets>
-                <img id="dovme" src="flash1.png">
-            </a-assets>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Dovme Prova</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: sans-serif; }
+        .ui-overlay {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 999; color: white; background: rgba(0,0,0,0.5);
+            padding: 10px; border-radius: 20px; text-align: center; width: 80%;
+        }
+    </style>
+</head>
+<body style="margin: 0; overflow: hidden;">
 
-            <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    <div class="ui-overlay">
+        Dovmeyi parmaginla surukle, buyut veya dondur.
+    </div>
 
-            <a-entity mindar-image-target="targetIndex: 0">
-                <a-plane src="#dovme" position="0 0 0" height="1" width="1" rotation="0 0 0" transparent="true"></a-plane>
-            </a-entity>
-        </a-scene>
-    </body>
+    <a-scene 
+        embedded 
+        arjs="sourceType: webcam; debugUIEnabled: false;" 
+        gesture-detector
+        renderer="logarithmicDepthBuffer: true;"
+        vr-mode-ui="enabled: false">
+        
+        <a-assets>
+            <img id="dovme" src="flash1.png">
+        </a-assets>
+
+        <a-entity
+            id="dovme-model"
+            geometry="primitive: plane; height: 1.5; width: 1.5"
+            material="src: #dovme; transparent: true; opacity: 0.9;"
+            position="0 0 -3"
+            rotation="0 0 0"
+            class="clickable"
+            gesture-handler>
+        </a-entity>
+
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
 </html>
